@@ -1,0 +1,12 @@
+footer .container-fluid{
+  padding-top: 20px;
+}
+footer div.xarxes i{
+  color: #eeeeee;
+}
+footer div.xarxes i:hover{
+  color: #cccccc;
+}
+footer .xarxes {
+  text-align: center;
+}

@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Homemade+Apple|Luckiest+Guy&display=swap');
+@font-face {
+  font-family: 'treasureMapFont';
+  src: url(assets/fonts/Treamd.ttf);
+}
+html *{
+  box-sizing: border-box;
+  font-family: 'Gloria Hallelujah', cursive;
+  text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Luckiest Guy';
+}
+span.signature {
+  font-family: 'Homemade Apple', cursive;
+}
+span.maptext{
+  font-family: 'treasureMapFont';
+}
+body{
+  background-image: url("assets/img/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+  background-size: cover;
+}
+a:hover{
+  text-decoration: none;
+  color: #cccccc;
+}
+img.responsive, #circleStyles.responsive{
+  max-width: 100%;
+  height: auto;
+}
+img.center, #circleStyles.responsive {
+  display:block;
+  margin : 0px auto;
+}
+
+

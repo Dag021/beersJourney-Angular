@@ -1,0 +1,29 @@
+#quarantine{
+  background-image: url("../../assets/img/background_quarantine.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+  background-size: cover;
+}
+#blockAlert{
+  min-height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#blockAlert h1{
+  color: red;
+  font-size: 11.5vw;
+  text-shadow: 2px 2px 4px #000000;
+  text-align: center;
+}
+
+.colorRed{
+  color: #ff0000 !important;
+  text-shadow: 2px 2px 4px #000000;
+}
+.colorWhite{
+  color: #ffffff !important;
+  text-shadow: 2px 2px 4px #000000;
+}

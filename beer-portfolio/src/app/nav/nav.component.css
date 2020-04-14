@@ -1,0 +1,29 @@
+#navbar {
+  z-index: 1000;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.sticky + .content {
+  padding-top: 60px;
+}
+#navbar a.nav-link{
+  font-family: 'Luckiest Guy';
+  font-size: 2em;
+  padding: 8px 16px 4px;
+}
+.logoNav{
+  width: 65px;
+  visibility: hidden;
+  opacity: 1;
+  transition: visibility 1s linear,opacity 1s linear;
+  -moz-transition: visibility 1s linear,opacity 1s linear;
+  -webkit-transition: visibility 1s linear,opacity 1s linear;
+  -o-transition: visibility 1s linear,opacity 1s linear;
+}
+#openFlags{
+  max-width: 6em;
+  min-width: 0px;
+}

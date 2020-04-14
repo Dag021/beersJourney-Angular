@@ -1,0 +1,102 @@
+<section>
+  <div class="container-fluid sectionContain" id="sectionPage">
+      <div class="row">
+          <div class="col-12 text-center">
+          <h1 class="form_tittle">Beer's Journey</h1>
+      </div><!--col-->
+      </div><!--row-->
+
+      <div class="row justify-content-center">
+          <div class="col-sm-8">
+            <!----------------------------------->
+            <!------------- Form ---------------->
+            <!----------------------------------->
+            <form name="formulario" action="" onSubmit="validation(); return false" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="fName">First Name</label>
+                        <input type="text" class="form-control" id="fName" placeholder="First Name" onfocus="clearFname()">
+                        <p id="errorFname" class="correctInput">Required field</p>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="lName">Last Name</label>
+                        <input type="text" class="form-control" id="lName" placeholder="Last Name" onfocus="clearLname()">
+                        <p id="errorLname" class="correctInput">Required field</p>
+                    </div>
+                </div><!------------- END FORM-ROW ---------------->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="fMail">Email</label>
+                        <input type="text" class="form-control" id="fMail" placeholder="Email" onfocus="clearFmail()">
+                        <p id="errorFmail" class="correctInput">Required field</p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="numPhone">Phone</label>
+                        <input type="text" class="form-control" id="numPhone" placeholder="Phone" onfocus="clearPhone()">
+                        <p id="errorPhone" class="correctInput">Required field</p>
+                    </div>
+                </div><!------------- END FORM-ROW ---------------->
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label for="numId">DNI</label>
+                      <input type="text" class="form-control" id="numId" placeholder="your id number" onfocus="clearNumDNI()">
+                      <p id="errorNumDNI" class="correctInput">Required field</p>
+                  </div>
+                </div><!------------- END FORM-ROW ---------------->
+                <div class="form-row">
+                  <div class="form-group col-md-6 blocPassword">
+                      <label for="inputPassword4">Password</label>
+                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" onfocus="clearPassword()">
+                      <img src="../../assets/img/open-Eye.png" alt="show password" id="openEyeP" width="30">
+                      <img src="../../assets/img/closed-Eye.png" alt="hidden password" id="closedEyeP" width="30">
+                      <p id="errorPassword" class="correctInput">Required field</p>
+                  </div>
+                  <div class="form-group col-md-6 blocPassword">
+                      <label for="inputConfirmPassword4">Confirm Password</label>
+                      <input type="password" class="form-control" id="inputConfirmPassword4" placeholder="Confirm Password" onfocus="clearRepeatPassword()">
+                      <img src="../../assets/img/open-Eye.png" alt="show password" id="openEyeRP" width="30">
+                      <img src="../../assets/img/closed-Eye.png" alt="hidden password" id="closedEyeRP" width="30">
+                      <p id="errorRepeatPassword" class="correctInput">Required field</p>
+                  </div>
+                </div><!------------- END FORM-ROW ---------------->
+                <div class="form-group">
+                  <label for="inputAddress">Address</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor" onfocus="clearAddress()">
+                  <p id="errorAddress" class="correctInput">Required field</p>
+                </div><!------------- END FORM-GROUP ---------------->
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity" onfocus="clearCity()">
+                    <p id="errorCity" class="correctInput">Required field</p>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="selectCountry">Country</label>
+                    <select id="selectCountry" class="form-control" onchange="clearCountry()">
+                      <option  value="0" selected>Choose...</option>
+                    </select>
+                    <p id="errorCountry" class="correctInput">Required field</p>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip" onfocus="clearZip()">
+                    <p id="errorZip" class="correctInput">Required field</p>
+                  </div>
+                </div><!------------- END FORM-ROW ---------------->
+                <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck" onclick="clearCheckbox()">
+                      <label class="form-check-label" for="gridCheck">Accept the conditions</label>
+                      <p id="errorCheckbox" class="correctInput">Required field</p>
+                  </div>
+                </div><!------------- END FORM-group---------------->
+
+                <button type="submit" class="btn btn-warning">Submit</button>
+                <div id="formResult"></div>
+
+              </form>
+          </div><!--col-->
+      </div><!--row-->
+  </div><!--container-->
+</section>
