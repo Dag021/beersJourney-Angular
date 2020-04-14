@@ -10,7 +10,7 @@ import { ContactComponent } from  './contact/contact.component';
 const  routes:  Routes  = [
   {
     path: '',
-    redirectTo: 'posts',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
