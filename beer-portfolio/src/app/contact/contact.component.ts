@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { DataDbService } from '../services/data-db.service';
+import { FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 declare var Arrcountries: any;
+
+function passwordMatchValidator(password: string): ValidatorFn {
+  return (control: FormControl) => {
+    //console.log(control)
+    if (!control || !control.parent) {
+      return null;
+    }
+    return control.parent.get(password).value === control.value ? null : { mismatch: true };
+  };
+}
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +20,34 @@ declare var Arrcountries: any;
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  firstNamePattern: any = /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/;
+  lastNamePattern: any = /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/;
+  mailPattern: any = /^[\w]+@{1}[\w]+\.[a-z]{2,3}$/;
+  phonePattern: any = /^((\+?34([ \t|\-])?)?[9|6|7]((\d{1}([ \t|\-])?[0-9]{3})|(\d{2}([ \t|\-])?[0-9]{2}))([ \t|\-])?[0-9]{2}([ \t|\-])?[0-9]{2})$/;
+  dniPattern: any = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+  passwordPattern: any =  /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
+
+  createFormGroup(){
+    return new FormGroup({
+      firstName: new FormControl('', [Validators.required, Validators.pattern(this.firstNamePattern)]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern(this.lastNamePattern)]),
+      mail: new FormControl('', [Validators.required, Validators.pattern(this.mailPattern)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(this.phonePattern)]),
+      dni: new FormControl('', [Validators.required, Validators.pattern(this.dniPattern)]),
+      password: new FormControl('', [Validators.required, Validators.pattern(this.passwordPattern)]),
+      confirmPassword: new FormControl('', [Validators.required, passwordMatchValidator('password')]),
+      address: new FormControl(''),
+      city: new FormControl(''),
+      country: new FormControl(''),
+      zip: new FormControl(''),
+      message: new FormControl('', [Validators.requiredTrue])
+    });
+  }
+
+  contactForm: FormGroup;
+  constructor(private dbData: DataDbService) {
+    this.contactForm = this.createFormGroup();
+  }
 
   ngOnInit() {
 
@@ -40,5 +79,29 @@ export class ContactComponent implements OnInit {
       }
 
   }
+
+  onResetForm(){
+     this.contactForm.reset();
+  }
+
+  onSaveForm(){
+    if(this.contactForm.valid){
+      this.dbData.saveMessage(this.contactForm.value);
+      this.onResetForm();
+      console.log("Valid");
+
+    } else {
+       console.log("Not Valid");
+    }
+  }
+
+  get firstName() { return this.contactForm.get('firstName');}
+  get lastName() { return this.contactForm.get('lastName');}
+  get mail() { return this.contactForm.get('mail');}
+  get phone() { return this.contactForm.get('phone');}
+  get dni() { return this.contactForm.get('dni');}
+  get password() { return this.contactForm.get('password');}
+  get confirmPassword() { return this.contactForm.get('confirmPassword');}
+  get message() { return this.contactForm.get('message');}
 
 }

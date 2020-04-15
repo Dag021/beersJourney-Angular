@@ -2,8 +2,13 @@
   <div class="container-fluid sectionContain" id="sectionPage">
       <div class="row">
           <div class="col-12 text-center">
-          <h1 class="form_tittle">Beer's Journey</h1>
-      </div><!--col-->
+              <h1 class="form_tittle">Beer's Journey</h1>
+          </div><!--col-->
+      </div><!--row-->
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <div><sup>*</sup> Required Field</div>
+          </div><!--col-->
       </div><!--row-->
 
       <div class="row justify-content-center">
@@ -11,88 +16,137 @@
             <!----------------------------------->
             <!------------- Form ---------------->
             <!----------------------------------->
-            <form name="formulario" action="" onSubmit="validation(); return false" id="contactForm">
+            <form [formGroup]="contactForm" name="formulario" (ngSubmit)="onSaveForm()" id="contactForm">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="fName">First Name</label>
-                        <input type="text" class="form-control" id="fName" placeholder="First Name" onfocus="clearFname()">
-                        <p id="errorFname" class="correctInput">Required field</p>
+                        <label for="fName">First Name<sup>*</sup></label>
+                        <input type="text" formControlName="firstName" class="form-control" id="fName" placeholder="First Name">
+                        <div class="errorForm" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                          <div class="container-error-message" *ngIf="firstName.errors.required">
+                            First Name is required
+                          </div>
+                          <div class="container-error-message" *ngIf="(firstName.dirty || firstName.touched) && firstName.invalid && firstName.errors.pattern">
+                            Error First Name format: Only letters, the first Capital letter.
+                          </div>
+                        </div>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="lName">Last Name</label>
-                        <input type="text" class="form-control" id="lName" placeholder="Last Name" onfocus="clearLname()">
-                        <p id="errorLname" class="correctInput">Required field</p>
+                        <label for="lName">Last Name<sup>*</sup></label>
+                        <input type="text" formControlName="lastName" class="form-control" id="lName" placeholder="Last Name">
+                        <div class="errorForm" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                          <div class="container-error-message" *ngIf="lastName.errors.required">
+                            Last Name is required
+                          </div>
+                          <div class="container-error-message" *ngIf="(lastName.dirty || lastName.touched) && lastName.invalid && lastName.errors.pattern">
+                            Error Last Name format: Only letters, the first Capital letter.
+                          </div>
+                        </div>
                     </div>
                 </div><!------------- END FORM-ROW ---------------->
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="fMail">Email</label>
-                        <input type="text" class="form-control" id="fMail" placeholder="Email" onfocus="clearFmail()">
-                        <p id="errorFmail" class="correctInput">Required field</p>
+                        <label for="fMail">Email<sup>*</sup></label>
+                        <input type="text" formControlName="mail" class="form-control" id="fMail" placeholder="Email">
+                        <div class="errorForm" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                          <div class="container-error-message" *ngIf="mail.errors.required">
+                            Mail is required
+                          </div>
+                          <div class="container-error-message" *ngIf="(mail.dirty || mail.touched) && mail.invalid && mail.errors.pattern">
+                            Error Mail format
+                          </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="numPhone">Phone</label>
-                        <input type="text" class="form-control" id="numPhone" placeholder="Phone" onfocus="clearPhone()">
-                        <p id="errorPhone" class="correctInput">Required field</p>
+                        <label for="numPhone">Phone<sup>*</sup></label>
+                        <input type="text"  formControlName="phone" class="form-control" id="numPhone" placeholder="Phone">
+                        <div class="errorForm" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                          <div class="container-error-message" *ngIf="phone.errors.required">
+                            Phone is required
+                          </div>
+                          <div class="container-error-message" *ngIf="(phone.dirty || phone.touched) && phone.invalid && phone.errors.pattern">
+                            Incomplete phone or Error Phone format
+                          </div>
+                        </div>
                     </div>
                 </div><!------------- END FORM-ROW ---------------->
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                      <label for="numId">DNI</label>
-                      <input type="text" class="form-control" id="numId" placeholder="your id number" onfocus="clearNumDNI()">
-                      <p id="errorNumDNI" class="correctInput">Required field</p>
+                      <label for="numId">DNI<sup>*</sup></label>
+                      <input type="text" formControlName="dni" class="form-control" id="numId" placeholder="your id number">
+                      <div class="errorForm" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
+                        <div class="container-error-message" *ngIf="dni.errors.required">
+                          DNI is required
+                        </div>
+                        <div class="container-error-message" *ngIf="(dni.dirty || dni.touched) && dni.invalid && dni.errors.pattern">
+                          Error DNI format
+                        </div>
+                      </div>
                   </div>
                 </div><!------------- END FORM-ROW ---------------->
                 <div class="form-row">
                   <div class="form-group col-md-6 blocPassword">
-                      <label for="inputPassword4">Password</label>
-                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" onfocus="clearPassword()">
+                      <label for="inputPassword4">Password<sup>*</sup></label>
+                      <input type="password" formControlName="password" class="form-control" id="inputPassword4" placeholder="Password">
                       <img src="../../assets/img/open-Eye.png" alt="show password" id="openEyeP" width="30">
                       <img src="../../assets/img/closed-Eye.png" alt="hidden password" id="closedEyeP" width="30">
-                      <p id="errorPassword" class="correctInput">Required field</p>
+                      <div class="errorForm" *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <div class="container-error-message" *ngIf="password.errors.required">
+                          Password is required
+                        </div>
+                        <div class="container-error-message" *ngIf="(password.dirty || password.touched) && password.invalid && password.errors.pattern">
+                          Error Password format: 8 to 16 characters with a capital letter, a lowercase letter and a number
+                        </div>
+                      </div>
                   </div>
                   <div class="form-group col-md-6 blocPassword">
-                      <label for="inputConfirmPassword4">Confirm Password</label>
-                      <input type="password" class="form-control" id="inputConfirmPassword4" placeholder="Confirm Password" onfocus="clearRepeatPassword()">
+                      <label for="inputConfirmPassword4">Confirm Password<sup>*</sup></label>
+                      <input type="password" formControlName="confirmPassword" class="form-control" id="inputConfirmPassword4" placeholder="Confirm Password">
                       <img src="../../assets/img/open-Eye.png" alt="show password" id="openEyeRP" width="30">
                       <img src="../../assets/img/closed-Eye.png" alt="hidden password" id="closedEyeRP" width="30">
-                      <p id="errorRepeatPassword" class="correctInput">Required field</p>
+                      <div class="errorForm" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                        <div class="container-error-message" *ngIf="confirmPassword.errors.required">
+                          Password is required
+                        </div>
+                        <div class="container-error-message" *ngIf="(confirmPassword.dirty || confirmPassword.touched) && confirmPassword.invalid">
+                          Error Confirm Password (Repeat Password)
+                        </div>
+                      </div>
                   </div>
                 </div><!------------- END FORM-ROW ---------------->
                 <div class="form-group">
                   <label for="inputAddress">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor" onfocus="clearAddress()">
+                  <input type="text" formControlName="address" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor">
                   <p id="errorAddress" class="correctInput">Required field</p>
                 </div><!------------- END FORM-GROUP ---------------->
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity" onfocus="clearCity()">
+                    <input type="text" formControlName="city" class="form-control" id="inputCity">
                     <p id="errorCity" class="correctInput">Required field</p>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="selectCountry">Country</label>
-                    <select id="selectCountry" class="form-control" onchange="clearCountry()">
+                    <select id="selectCountry" formControlName="country" class="form-control">
                       <option  value="0" selected>Choose...</option>
                     </select>
                     <p id="errorCountry" class="correctInput">Required field</p>
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip" onfocus="clearZip()">
+                    <input type="text" formControlName="zip" lass="form-control" id="inputZip">
                     <p id="errorZip" class="correctInput">Required field</p>
                   </div>
                 </div><!------------- END FORM-ROW ---------------->
                 <div class="form-group">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck" onclick="clearCheckbox()">
-                      <label class="form-check-label" for="gridCheck">Accept the conditions</label>
+                      <input formControlName="message" class="form-check-input" type="checkbox" id="gridCheck" required>
+                      <label class="form-check-label" for="gridCheck">Accept the conditions<sup>*</sup></label>
                       <p id="errorCheckbox" class="correctInput">Required field</p>
                   </div>
                 </div><!------------- END FORM-group---------------->
 
-                <button type="submit" class="btn btn-warning">Submit</button>
+                <button type="submit" class="btn btn-warning" [disabled]="!contactForm.valid">Submit</button>
                 <div id="formResult"></div>
 
               </form>
